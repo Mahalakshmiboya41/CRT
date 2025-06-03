@@ -1,0 +1,79 @@
+class Node:
+    def _init_(self, data):
+        self.data = data
+        self.next = None
+
+class LinkedList:
+    def _init_(self):
+        self.head = None
+
+    def insert_begin(self, data):
+        node = Node(data)
+        node.next = self.head
+        self.head = node
+
+    def insert_end(self, data):
+        node = Node(data)
+        if not self.head:
+            self.head = node
+            return
+        temp = self.head
+        while temp.next:
+            temp = temp.next
+        temp.next = node
+
+    def insert_pos(self, data, pos):
+        node = Node(data)
+        if pos == 0:
+            self.insert_begin(data)
+            return
+        temp = self.head
+        for _ in range(pos - 1):
+            if not temp:
+                return
+            temp = temp.next
+        node.next = temp.next
+        temp.next = node
+
+    def delete_begin(self):
+        if self.head:
+            self.head = self.head.next
+
+    def delete_end(self):
+        if not self.head:
+            return
+        if not self.head.next:
+            self.head = None
+            return
+        temp = self.head
+        while temp.next.next:
+            temp = temp.next
+        temp.next = None
+
+    def delete_pos(self, pos):
+        if pos == 0:
+            self.delete_begin()
+            return
+        temp = self.head
+        for _ in range(pos - 1):
+            if not temp or not temp.next:
+                return
+            temp = temp.next
+        if temp.next:
+            temp.next = temp.next.next
+
+    def display(self):
+        temp = self.head
+        while temp:
+            print(temp.data, end=" -> ")
+            temp = temp.next
+        print("None")
+
+ll = LinkedList()
+ll.insert_begin(5)
+ll.insert_begin(10)
+ll.insert_end(2)
+ll.insert_pos(3, 1)
+ll.display()
+ll.delete_pos(1)
+ll.display()

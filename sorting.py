@@ -1,0 +1,9 @@
+arr=[20,95,-76,99,-56,-78]
+sort=arr.sort()
+min_val=min(arr)
+max_val=max(arr)
+sum_val=sum(arr)
+print("sorted:",arr)
+print("min_val:",arr)
+print("sormax_valt:",arr)
+print("sort:",arr)

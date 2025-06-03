@@ -1,0 +1,8 @@
+s=input()
+count_hyphens=s.count('-')
+new_str='-'*count_hyphens+s.replace('-',' ')
+print(new_str)
+print("count of extra spaces")
+count_spaces=new_str.count(' ')
+new_str1=new_str.replace(' '*count_spaces,' ')
+print(new_str1)
